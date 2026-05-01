@@ -35,12 +35,12 @@ Construction delays can directly impact:
 
 The analysis integrates two primary datasets:
 
-### 1. EIA Form 860M (2022–2025)
+### 1. EIA Form 860M (2022–2025) [EIA Form 860M](https://www.eia.gov/electricity/data/eia860m/)
 - **PLANNED data:** Proposed and under-construction projects
 - **OPERATING data:** Completed projects with actual operation dates
 - Used to track project transitions and calculate delays
 
-### 2. Crux Climate Pricing Data
+### 2. Crux Climate Pricing Data [Crux Climate](https://www.cruxclimate.com/)
 - Quarterly ITC and PTC prices (2023–2025)
 - Expressed in cents per dollar of face value
 - Used to analyze market response to risk
