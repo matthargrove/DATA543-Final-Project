@@ -128,7 +128,7 @@ Pipeline includes:
 ***
 
 ### 3. Financial Risk & Insurance Insights
-* ** Q4 Slippage:** Projects planned for the final quarter have a **41% to 46% probability** of slipping into the next tax year. This potentially jeopardizes immediate tax credit eligibility and negatively impacts project Internal Rates of Return (IRR).
+* **Q4 Slippage:** Projects planned for the final quarter have a **41% to 46% probability** of slipping into the next tax year. This potentially jeopardizes immediate tax credit eligibility and negatively impacts project Internal Rates of Return (IRR).
 * **Binary Exposure:** Solar projects show higher financial risk density due to ITC structures where eligibility is binary.
 * **Estimated Losses:** Potential revenue losses exceed **$1.5 billion** across the pipeline.
 * **Tail Risk & Insurance:** The 95th percentile "tail risk" is approximately **18 months**. While average delays are moderate, this extreme outlier value provides a concrete baseline for pricing Delay in Start Up (DSU) insurance premiums.
