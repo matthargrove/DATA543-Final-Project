@@ -83,7 +83,7 @@ Engineered features include:
   - Delays and PTC prices
 
 ### Machine Learning Model
-- **Model:** Random Forest Regressor  
+- **Model:** Ridge Regression
 - **Target:** `delay_months`  
 - **Features:** Capacity, time variables, technology, status, geography  
 
