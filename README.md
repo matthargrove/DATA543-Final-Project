@@ -104,7 +104,7 @@ Pipeline includes:
 
 ## Machine Learning Concepts Used
 
-- **Regression (Random Forest):** Predicting continuous delay outcomes  
+- **Ridge Regression:** A regression type used for predicting continuous outcomes (delays and capacity) using L2 regularization.
 - **Feature Engineering:** Creating delay metrics and temporal features  
 - **Preprocessing:** Scaling and encoding features  
 - **Model Evaluation:** MAE, RMSE, and R²  
@@ -130,7 +130,7 @@ The implementation was inspired by a sklearn-based regression demo, incorporatin
 - Wind projects:
   - Weak performance (R² ≈ 0.22)
 
-➡️ **Conclusion:** Delays are partially predictable but still heavily driven by unpredictable, local factors.
+ **Conclusion:** Delays are partially predictable but still heavily driven by unpredictable, local factors.
 
 ---
 
@@ -139,7 +139,7 @@ The implementation was inspired by a sklearn-based regression demo, incorporatin
 - Low explanatory power (R² < 0.30)
 - Limited sample size (N=6 quarters) reduces statistical strength
 
-➡️ **Conclusion:** Delay risk may not yet be fully priced into the market or requires more granular data.
+ **Conclusion:** Delay risk may not yet be fully priced into the market or requires more granular data.
 
 ---
 
@@ -150,7 +150,7 @@ The implementation was inspired by a sklearn-based regression demo, incorporatin
   - 41–46% probability of slipping into the next tax year
 - 95th percentile delay ≈ **18 months**
 
-➡️ **Conclusion:** Extreme delay scenarios create meaningful downside risk for investors and insurers.
+ **Conclusion:** Extreme delay scenarios create meaningful downside risk for investors and insurers.
 
 ---
 
