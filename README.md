@@ -146,11 +146,13 @@ The implementation was inspired by a sklearn-based regression demo, incorporatin
 ### 3. Financial Risk Insights
 - Solar projects show **higher financial exposure**
 - Estimated losses exceed **$1.5 billion**
-- Identified **“Q4 Trap”**:
+- Identified Q4 projects slip into next year:
   - 41–46% probability of slipping into the next tax year
 - 95th percentile delay ≈ **18 months**
 
  **Conclusion:** Extreme delay scenarios create meaningful downside risk for investors and insurers.
 
+## Installation and Setup
+We used Colab, so download all of the .ipynb files and load them into Google Colab. From there, upload the .csv files into the contnet folder and begin running code.
 ---
 
