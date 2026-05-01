@@ -153,6 +153,6 @@ The implementation was inspired by a sklearn-based regression demo, incorporatin
  **Conclusion:** Extreme delay scenarios create meaningful downside risk for investors and insurers.
 
 ## Installation and Setup
-We used Colab, so download all of the .ipynb files and load them into Google Colab. From there, upload the .csv files into the contnet folder and begin running code.
+- We used Colab, so download all of the .ipynb files and load them into Google Colab. From there, upload the .csv files into the contnet folder and begin running code.
 ---
 
