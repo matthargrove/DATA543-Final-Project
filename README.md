@@ -117,7 +117,7 @@ Pipeline includes:
 - **Pipeline Design:** End-to-end sklearn workflow  
 - **Risk Analysis:** Tail risk and loss estimation  
 
-The implementation was inspired by a sklearn-based regression demo, incorporating structured pipelines and feature transformations. :contentReference[oaicite:0]{index=0}
+The implementation was inspired by a sklearn-based regression demo, incorporating structured pipelines and feature transformations. 
 
 ---
 
