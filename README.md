@@ -6,13 +6,8 @@ This repository contains code, data processing pipelines, and machine learning m
 
 ---
 
-## Abstract
-
-The Inflation Reduction Act (IRA) introduced transferability for clean energy tax credits, creating a rapidly growing secondary market. However, recent policy changes, specifically the One Big Beautiful Bill Act (2025), which have imposed strict deadlines on eligibility, makes construction delays a critical financial risk.  
-
-This study investigates whether construction delays are predictable and whether delay risk is reflected in tax credit pricing. Using project-level data from EIA Form 860M and pricing data from Crux Climate, we apply machine learning and statistical methods to analyze delay behavior and its financial implications.
-
-Our results indicate that construction delays are highly stochastic and difficult to predict using standard project features. While machine learning models show moderate predictive power in some cases, delays are largely driven by localized, idiosyncratic factors. From a financial perspective, this creates significant exposure for tax credit investors, particularly in solar projects where eligibility is binary. The findings highlight the importance of specialized risk management tools, including insurance-based approaches.
+**Abstract**
+>The Inflation Reduction Act (IRA) introduced transferability for clean energy tax credits, creating a rapidly growing secondary market. However, recent policy changes, specifically the One Big Beautiful Bill Act (2025), which have imposed strict deadlines on eligibility, makes construction delays a critical financial risk. This study investigates whether construction delays are predictable and whether delay risk is reflected in tax credit pricing. Using project-level data from EIA Form 860M and pricing data from Crux Climate, we apply machine learning and statistical methods to analyze delay behavior and its financial implications. Our results indicate that construction delays are highly stochastic and difficult to predict using standard project features. While machine learning models show moderate predictive power in some cases, delays are largely driven by localized, idiosyncratic factors. From a financial perspective, this creates significant exposure for tax credit investors, particularly in solar projects where eligibility is binary. The findings highlight the importance of specialized risk management tools, including insurance-based approaches.
 
 ---
 
