@@ -94,6 +94,7 @@ Pipeline includes:
 
 ## Machine Learning Concepts Used
 
+* **Random Forest Regressor:** An ensemble learning method used to predict continuous outcomes by aggregating multiple decision trees.
 * **Ridge Regression**: Chosen for its efficiency in predicting continuous outcomes with L2 regularization.
 * **Feature Engineering:** Creating delay metrics, temporal features, and spatial coordinates.
 * **Preprocessing:** One hot encoding and scaling via a structured scikit-learn pipeline.
