@@ -51,7 +51,7 @@ The random forest model delivered the study’s most actionable result. Overall,
 
 # 4. Conclusion and Future Work
 
-We did not find statistical evidence that aggregate delay risk currently drives market prices, though this is likely a data limitation rather than proof of irrelevance. On the prediction side, solar delays are highly predictable (R² = 0.70), supporting standardized insurance pricing, while wind remains too uncertain (R² = 0.22) for the same approach. Two actuarial benchmarks stand out: the 18-month 95th-percentile tail risk and the 41–46% Q4 slippage probability, both of which provide objective bounds for risk-adjusted premiums.
+We did not find statistical evidence that aggregate delay risk currently drives market prices, though this is likely a data limitation rather than proof of irrelevance. On the prediction side, solar delays are highly predictable (R² = 0.70), supporting standardized insurance pricing, while wind remains too uncertain (R² = 0.22) for the same approach. Two actuarial benchmarks stand out: the 18-month 95th-percentile tail risk and the 41–46% Q4 slippage probability, both of which provide objective bounds for risk-adjusted premiums. Although machine learning models demonstrate moderate predictive strength, the prevalence of localized, idiosyncratic drivers suggests that tax credit investors face substantial exposure, especially given the binary nature of solar eligibility.
 
 Future work should focus on expanding the pricing sample as the market matures, securing transaction-level data for project-level price analysis, and identifying additional features to improve wind delay predictability beyond its current 22%.
 
