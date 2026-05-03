@@ -2,7 +2,7 @@
 
 # Clean Energy Construction Delay Risk & Tax Credit Pricing
 
-This repo contains code, data, and machine learning models used to analyze construction delays in U.S. clean energy projects and their impact on transferable tax credit pricing. The project focuses on solar and wind infrastructure from 2023 to 2025, with an emphasis on financial risk exposure and insurance implications.
+This repo was contributed by Matthew Hargrove, Fiona Wong, and Blake Bridges and contains code, data, and machine learning models used to analyze construction delays in U.S. clean energy projects and their impact on transferable tax credit pricing. The project focuses on solar and wind infrastructure from 2023 to 2025, with an emphasis on financial risk exposure and insurance implications.
 
 ***
 
