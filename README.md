@@ -25,8 +25,9 @@ We combined two datasets. The first is  [EIA Form 860M](https://www.eia.gov/elec
 ### 2.2 Analytical Approach
 We first used a ridge regression to identify which project features (technology type, location, capacity) drive construction delays. Ridge regression works like a standard regression but includes a penalty that prevents any single variable from overwhelming the model, which is helpful when features are correlated. From the resulting delay predictions, we built a risk score for each project (delay months × MW capacity) and aggregated these by region to map where financial exposure is concentrated.
 
-After that, we then ran a simple linear regression to test the core question: do quarterly average delays statistically explain ITC/PTC price movements? Finally, we trained a random forest model to predict delays at the individual project level. A random forest builds many decision trees on different subsets of data and averages their predictions, capturing non-linear patterns that a single regression line would miss. This tests whether delay risk is predictable enough to be “insurable”—that is, whether you can price a policy around it.
+After that, we then ran a simple linear regression to test the core question: do quarterly average delays statistically explain ITC/PTC price movements? Finally, we trained a random forest model to predict delays at the individual project level. A random forest builds many decision trees on different subsets of data and averages their predictions, capturing non-linear patterns that a single regression line would miss. This tests whether delay risk is predictable enough to be “insurable" (i.e. whether you can price a policy around it).
 
+To conclude the analysis, we generated various charts and plots to provide a clear visual interpretation of the model's performance and findings.
 ***
 
 # 3. Results & Key Findings
