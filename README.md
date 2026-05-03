@@ -30,23 +30,23 @@ After that, we then ran a simple linear regression to test the core question: do
 ***
 
 ## 3. Results & Key Findings
-3.1 Drivers of Delay
+**3.1 Drivers of Delay**
 The ridge regression showed that delay risk is driven primarily by technology and geography. Offshore wind had the largest positive effect on predicted delay, reflecting the logistical complexity of marine construction. Latitude was the second strongest predictor, pointing to regional differences in permitting and grid infrastructure. Onshore wind actually reduced predicted delay relative to the baseline, while solar and project capacity had moderate effects.
 
-3.2 Geographic Risk Concentration
+**3.2 Geographic Risk Concentration**
 Risk scores are heavily concentrated in the South (driven by the large Texas and Southeast solar pipeline), followed by the Midwest and West. The Northeast carries relatively less exposure. This clustering matters because projects in the same region share permitting authorities and interconnection queues, so a single bottleneck can create cascading delays
 
-3.3 Timing and Tail Risk
+**3.3 Timing and Tail Risk**
 Projects scheduled to come online in the last quarter of the year (months 9–12) face roughly a 40%+ probability of slipping into the next tax year—compared to just 5–8% for early-year projects. Under OBBBA’s rules, that slip means total credit loss. The delay distribution also has a long tail: the 95th percentile delay is approximately 18 months, meaning 5% of projects face delays of a year and a half or more. These extreme cases drive the most significant financial and insurance risk.
 
-3.4 Financial Impact
+**3.4 Financial Impact**
 We estimated total delay-related losses of approximately $547 million for solar, $132 million for onshore wind, and $15 million for offshore wind. Solar dominates not because individual solar projects are the riskiest, but because the pipeline is so much larger. Offshore wind carries the highest per-project risk but has far fewer active projects.
 
 
-3.5 Do Delays Affect Market Prices?
+**3.5 Do Delays Affect Market Prices?**
 Our linear regression found no statistically significant relationship between average construction delays and quarterly credit prices. The ITC regression returned a p-value of 0.267 (R² = 0.293) and PTC returned a p-value of 0.491 (R² = 0.125)—both well above the 0.05 significance threshold. However, this null result should be read cautiously: we only had six quarterly observations, which is too few to detect all but the strongest effects. Other factors like policy sentiment and buyer demand likely dominate at the aggregate level, and the relationship may exist at the project level but get averaged away in quarterly data.
 
-3.6 Predicting Individual Project Delays
+**3.6 Predicting Individual Project Delays**
 The random forest model delivered the study’s most actionable result. Overall, it achieved a mean absolute error of 1.71 months and an R² of 0.63. Broken down by technology, solar projects (N=970) showed strong predictability with an R² of 0.70 and MAE of 1.91 months, while wind projects (N=74) were much harder to predict at R² = 0.22 and MAE of 6.13 months. In other words, solar delays are predictable enough to support standardized insurance products with actuarially sound premiums, while wind delays require bespoke, case-by-case underwriting.
 
 ## 4. Conclusion and Future Work
