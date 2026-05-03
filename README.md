@@ -6,133 +6,50 @@ This repo contains code, data, and machine learning models used to analyze const
 
 ***
 
-**Abstract**
->The Inflation Reduction Act (IRA) introduced transferability for clean energy tax credits, creating a rapidly growing secondary market. However, recent policy changes, specifically the One Big Beautiful Bill Act (2025), which have imposed strict deadlines on eligibility, makes construction delays a critical financial risk. This study investigates whether construction delays are predictable and whether delay risk is reflected in tax credit pricing. Using project-level data from EIA Form 860M and pricing data from Crux Climate, we apply machine learning and statistical methods to analyze delay behavior and its financial implications. Our results indicate that construction delays are highly stochastic and difficult to predict using standard project features. While machine learning models show moderate predictive power in some cases, delays are largely driven by localized, idiosyncratic factors. From a financial perspective, this creates significant exposure for tax credit investors, particularly in solar projects where eligibility is binary. The findings highlight the importance of specialized risk management tools, including insurance based approaches.
+## 1.Introduction & Background
+
+Clean energy tax credits come in two forms: Investment Tax Credits (ITCs), which are one-time credits based on project cost and primarily used by solar projects, and Production Tax Credits (PTCs), which are ongoing payments based on electricity generated and mainly used by wind projects. The Inflation Reduction Act of 2022 allowed developers to sell these credits to unrelated buyers for cash, creating a secondary market that reached $42 billion by 2025 with credits trading at 89–95 cents per dollar. The policy landscape shifted dramatically when the One Big Beautiful Bill Act (OBBBA), signed July 4, 2025, eliminated ITC/PTC eligibility for wind and solar projects placed in service after December 31, 2027, unless construction began by July 4, 2026. This compressed timeline means construction delays can now render credits entirely worthless. Our study asks: does this delay risk reduce market prices for transferable credits, and what do delay patterns tell us about pricing insurance against this risk?
+
+
+
+## 2.Methdology 
+## 2.1 Data Sources and Integration
+We combined two datasets. The first is EIA Form 860M (https://www.eia.gov/electricity/data/eia860m/), which provides monthly generator-level data on every U.S. power plant. We used four annual snapshots (January 2023–2026), filtering for solar and wind projects, to track when projects were planned to operate versus when they actually came online. The second is Crux Climate https://www.cruxclimate.com/), which reports quarterly ITC and PTC market prices from 2023 H2 through 2025 Q4. We converted EIA monthly data to quarterly frequency to match Crux’s reporting cadence, and defined construction delay as the difference between a project’s actual operating date and its first planned date, measured in months.
+
+
+## 2.2 Analytical Approach
+We first used a ridge regression to identify which project features (technology type, location, capacity) drive construction delays. Ridge regression works like a standard regression but includes a penalty that prevents any single variable from overwhelming the model, which is helpful when features are correlated. From the resulting delay predictions, we built a risk score for each project (delay months × MW capacity) and aggregated these by region to map where financial exposure is concentrated.
+
+After that, we then ran a simple linear regression to test the core question: do quarterly average delays statistically explain ITC/PTC price movements? Finally, we trained a random forest model to predict delays at the individual project level. A random forest builds many decision trees on different subsets of data and averages their predictions, capturing non-linear patterns that a single regression line would miss. This tests whether delay risk is predictable enough to be “insurable”—that is, whether you can price a policy around it.
 
 ***
 
-## Introduction & Background
+## 3. Results & Key Findings
+3.1 Drivers of Delay
+The ridge regression showed that delay risk is driven primarily by technology and geography. Offshore wind had the largest positive effect on predicted delay, reflecting the logistical complexity of marine construction. Latitude was the second strongest predictor, pointing to regional differences in permitting and grid infrastructure. Onshore wind actually reduced predicted delay relative to the baseline, while solar and project capacity had moderate effects.
 
-The Inflation Reduction Act of 2022 introduced transferability for clean energy tax credits, allowing developers to sell Investment Tax Credits (ITCs) and Production Tax Credits (PTCs) to unrelated buyers for cash. This created a secondary market where credits trade at a discount to face value, typically **89 to 95 cents per dollar**. The market grew rapidly, with transfer volume reaching approximately **$42 billion in 2025**, up 27% from the prior year.
+3.2 Geographic Risk Concentration
+Risk scores are heavily concentrated in the South (driven by the large Texas and Southeast solar pipeline), followed by the Midwest and West. The Northeast carries relatively less exposure. This clustering matters because projects in the same region share permitting authorities and interconnection queues, so a single bottleneck can create cascading delays
 
-However, the **One Big Beautiful Bill Act (OBBBA)**, signed July 4, 2025, imposed sweeping restrictions. For wind and solar, the ITC and PTC will be eliminated for projects placed in service after December 31, 2027, unless construction begins by July 4, 2026. These compressed timelines transformed construction delays from a practical inconvenience into a financial risk. A project that falls behind schedule may miss its eligibility window entirely, rendering its credits worthless.
+3.3 Timing and Tail Risk
+Projects scheduled to come online in the last quarter of the year (months 9–12) face roughly a 40%+ probability of slipping into the next tax year—compared to just 5–8% for early-year projects. Under OBBBA’s rules, that slip means total credit loss. The delay distribution also has a long tail: the 95th percentile delay is approximately 18 months, meaning 5% of projects face delays of a year and a half or more. These extreme cases drive the most significant financial and insurance risk.
 
-This project investigates whether construction delay risk is priced into the transferable tax credit market. We use project level data from the EIA (Form 860M) on solar and wind projects from 2023 to 2025, combined with quarterly pricing data from Crux Climate. Our framework applies machine learning to quantify the price discount associated with delays and identify the primary drivers of delay risk.
+3.4 Financial Impact
+We estimated total delay-related losses of approximately $547 million for solar, $132 million for onshore wind, and $15 million for offshore wind. Solar dominates not because individual solar projects are the riskiest, but because the pipeline is so much larger. Offshore wind carries the highest per-project risk but has far fewer active projects.
 
-***
 
-## Research Question & Motivation
+3.5 Do Delays Affect Market Prices?
+Our linear regression found no statistically significant relationship between average construction delays and quarterly credit prices. The ITC regression returned a p-value of 0.267 (R² = 0.293) and PTC returned a p-value of 0.491 (R² = 0.125)—both well above the 0.05 significance threshold. However, this null result should be read cautiously: we only had six quarterly observations, which is too few to detect all but the strongest effects. Other factors like policy sentiment and buyer demand likely dominate at the aggregate level, and the relationship may exist at the project level but get averaged away in quarterly data.
 
-This project addresses the following core question:
+3.6 Predicting Individual Project Delays
+The random forest model delivered the study’s most actionable result. Overall, it achieved a mean absolute error of 1.71 months and an R² of 0.63. Broken down by technology, solar projects (N=970) showed strong predictability with an R² of 0.70 and MAE of 1.91 months, while wind projects (N=74) were much harder to predict at R² = 0.22 and MAE of 6.13 months. In other words, solar delays are predictable enough to support standardized insurance products with actuarially sound premiums, while wind delays require bespoke, case-by-case underwriting.
 
-**Does construction delay risk reduce the market price of transferable tax credits, and what does this imply for insurance pricing?**
+## 4. Conclusion and Future Work
 
-The motivation is driven by:
-* A rapidly growing tax credit transfer market (~$42B in 2025)
-* Policy imposed deadlines (**OBBBA**) that create **binary eligibility risk**
-* Increasing price discounts in ITC and PTC markets
-* High exposure in solar heavy development pipelines
+We did not find statistical evidence that aggregate delay risk currently drives market prices, though this is likely a data limitation rather than proof of irrelevance. On the prediction side, solar delays are highly predictable (R² = 0.70), supporting standardized insurance pricing, while wind remains too uncertain (R² = 0.22) for the same approach. Two actuarial benchmarks stand out: the 18-month 95th-percentile tail risk and the 41–46% Q4 slippage probability, both of which provide objective bounds for risk-adjusted premiums.
 
-The exposure is substantial. The near term pipeline is dominated by solar, with planned capacity peaking at **36 GW in 2026**, the largest build cycle in U.S. history. Solar projects claim ITCs, which are binary because the project either qualifies or it does not. Pricing data confirms growing vulnerability; ITC prices fell from 93.5 cents in Q4 2024 to 89 cents by Q4 2025. Approximately 45% of planned capacity falls into a "low confidence" category, where the probability of missing a tax deadline is meaningfully higher.
+Future work should focus on expanding the pricing sample as the market matures, securing transaction-level data for project-level price analysis, and identifying additional features to improve wind delay predictability beyond its current 22%.
 
-***
-
-## Data Sources
-
-The analysis integrates two primary datasets:
-
-### 1. [EIA Form 860M](https://www.eia.gov/electricity/data/eia860m/) (2022 to 2025)
-* **PLANNED data:** Proposed and under construction projects (December data used).
-* **OPERATING data:** Completed projects with actual operation dates.
-* Used to track project transitions and calculate delays for 1,044 completed projects.
-
-### 2. [Crux Climate](https://www.cruxclimate.com/) Pricing Data
-* Quarterly ITC and PTC prices (2023 H2 to 2025 Q4).
-* Expressed in cents per dollar of credit face value.
-* Used to analyze market response to risk.
-
-The dataset focuses exclusively on:
-* Solar Photovoltaic and Thermal
-* Onshore and Offshore Wind
-
-***
-
-## Data Processing & Feature Engineering
-
-Key preprocessing steps include:
-
-* **Filtering:** Isolated solar and wind energy projects from all years.
-* **Unique Identification:** Created a unique `plant_key` by concatenating 'Entity ID' and 'Plant ID' to ensure consistent tracking across different annual datasets.
-* **Project Matching:** Merged PLANNED data with OPERATING data (2023 to 2025) using the `plant_key` and 'Technology' to identify completed projects.
-* **Delay Calculation:** 
-  * `delay_months` = Actual Operating Date − Planned Operation Date
-* **Quarterly Aggregation:** Grouped project data by 'Actual Operating Year Quarter' to calculate total capacity (MW), average delay, and number of projects.
-* **Price Integration:** Merged aggregated quarterly delays with Crux Climate price data, aligning periods such as mapping 2023Q3 and 2023Q4 to '2023H2'.
-
-***
-
-## Methodology
-
-### Regression Analysis
-* Simple linear regression used to investigate the statistical relationship between `average_delay_months` and ITC or PTC prices using the merged quarterly data.
-
-### Machine Learning Model
-* **Model:** Random Forest Regressor (chosen for robustness and handling non linear relationships).
-* **Target:** `delay_months`
-* **Features:** Nameplate Capacity (MW), Planned Operation Month and Year, Technology, Status (project stage), Latitude, and Longitude.
-
-Pipeline includes:
-* One hot encoding for categorical variables ('Technology', 'Status').
-* Train and test split (80/20).
-* Evaluation metrics: MAE, RMSE, and $R^2$ Score.
-
-### Additional Analysis
-* **Technology Specific Modeling:** Independent pipelines for Solar Photovoltaic and Onshore Wind to assess accuracy at a granular level.
-* **Tail Risk Estimation:** Analysis of 95th percentile delays and financial exposure.
-
-***
-
-## Machine Learning Concepts Used
-
-* **Random Forest Regressor:** An ensemble learning method used to predict continuous outcomes by aggregating multiple decision trees.
-* **Ridge Regression**: Chosen for its efficiency in predicting continuous outcomes with L2 regularization.
-* **Feature Engineering:** Creating delay metrics, temporal features, and spatial coordinates.
-* **Preprocessing:** One hot encoding and scaling via a structured scikit-learn pipeline.
-* **Model Evaluation:** Assessment via MAE (Mean Absolute Error), RMSE (Root Mean Squared Error), and $R^2$ (Coefficient of Determination).
-* **Risk Analysis:** Tail risk estimation and binary eligibility loss calculations.
-
-***
-
-## Results & Key Findings
-
-### 1. Delay Predictability
-* **Overall Model Performance:**
-  * **MAE:** 1.71 months
-  * **RMSE:** 2.93 months
-  * **$R^2$:** 0.63 (Indicating selected characteristics are moderately effective).
-
-* **Stochastic Nature of Delays:**
-  * Further analysis using Ridge Regression yielded a low **$R^2$ (~0.0468)**, suggesting that construction delays are highly stochastic and idiosyncratic.
-  * This indicates that delays are driven by complex, local factors rather than simply geography or project size, reinforcing the need for specialized risk management over generalized forecasting.
-
-* **Technology Disparity:**
-  * **Solar Photovoltaic ($N=970$):** Strong performance (**$R^2 \approx 0.70$**). Large sample size and consistent development characteristics allow for more reliable prediction.
-  * **Onshore Wind Turbine ($N=74$):** Weak performance (**$R^2 \approx 0.22$**). Errors exceed six months, likely due to smaller sample size and more volatile local factors.
-
-***
-
-### 2. Relationship to Tax Credit Prices
-* **Lack of Statistical Significance:** P-values for ITC (0.267) and PTC (0.491) exceed 0.05.
-* **Low Explanatory Power:** **$R^2 < 0.30$** for price models.
-* **Conclusion:** Delay risk may not yet be fully priced into the market as a standalone variable, or the limited quarterly observations ($N=6$) lack the power to detect the relationship.
-
-***
-
-### 3. Financial Risk & Insurance Insights
-* **Q4 Slippage:** Projects planned for the final quarter have a **41% to 46% probability** of slipping into the next tax year. This potentially jeopardizes immediate tax credit eligibility and negatively impacts project Internal Rates of Return (IRR).
-* **Binary Exposure:** Solar projects show higher financial risk density due to ITC structures where eligibility is binary.
-* **Tail Risk & Insurance:** The 95th percentile "tail risk" is approximately **18 months**. While average delays are moderate, this extreme outlier value provides a baseline for pricing Delay in Start Up (DSU) insurance premiums.
-* **Loss Standardization:** By standardizing losses per MW, the analysis offers a transparent framework for comparing risk across technologies, specifically highlighting the unique volatility associated with solar and onshore wind infrastructure.
 
 ***
 
