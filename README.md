@@ -6,6 +6,11 @@ This repo contains code, data, and machine learning models used to analyze const
 
 ***
 
+**Abstract**
+>The Inflation Reduction Act (IRA) introduced transferability for clean energy tax credits, creating a rapidly growing secondary market. However, recent policy changes, specifically the One Big Beautiful Bill Act (2025), which have imposed strict deadlines on eligibility, makes construction delays a critical financial risk. This study investigates whether construction delays are predictable and whether delay risk is reflected in tax credit pricing. Using project-level data from EIA Form 860M and pricing data from Crux Climate, we apply machine learning and statistical methods to analyze delay behavior and its financial implications. Our results indicate that construction delays are highly stochastic and difficult to predict using standard project features. While machine learning models show moderate predictive power in some cases, delays are largely driven by localized, idiosyncratic factors. From a financial perspective, this creates significant exposure for tax credit investors, particularly in solar projects where eligibility is binary. The findings highlight the importance of specialized risk management tools, including insurance based approaches.
+
+***
+
 ## 1.Introduction & Background
 
 Clean energy tax credits come in two forms: Investment Tax Credits (ITCs), which are one-time credits based on project cost and primarily used by solar projects, and Production Tax Credits (PTCs), which are ongoing payments based on electricity generated and mainly used by wind projects. The Inflation Reduction Act of 2022 allowed developers to sell these credits to unrelated buyers for cash, creating a secondary market that reached $42 billion by 2025 with credits trading at 89–95 cents per dollar. The policy landscape shifted dramatically when the One Big Beautiful Bill Act (OBBBA), signed July 4, 2025, eliminated ITC/PTC eligibility for wind and solar projects placed in service after December 31, 2027, unless construction began by July 4, 2026. This compressed timeline means construction delays can now render credits entirely worthless. Our study asks: does this delay risk reduce market prices for transferable credits, and what do delay patterns tell us about pricing insurance against this risk?
