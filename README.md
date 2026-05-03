@@ -19,7 +19,7 @@ Clean energy tax credits come in two forms: Investment Tax Credits (ITCs), which
 
 ## 2.Methdology 
 ## 2.1 Data Sources and Integration
-We combined two datasets. The first is EIA Form 860M (https://www.eia.gov/electricity/data/eia860m/), which provides monthly generator-level data on every U.S. power plant. We used four annual snapshots (January 2023–2026), filtering for solar and wind projects, to track when projects were planned to operate versus when they actually came online. The second is Crux Climate https://www.cruxclimate.com/), which reports quarterly ITC and PTC market prices from 2023 H2 through 2025 Q4. We converted EIA monthly data to quarterly frequency to match Crux’s reporting cadence, and defined construction delay as the difference between a project’s actual operating date and its first planned date, measured in months.
+We combined two datasets. The first is  [EIA Form 860M](https://www.eia.gov/electricity/data/eia860m/) (2022 to 2025), which provides monthly generator-level data on every U.S. power plant. This dataset has planned data, for proposed and under construction projects, and operating data, for completed projects with actual operation dates. We used four annual snapshots (January 2023–2026), filtering for solar and wind projects, to track when projects were planned to operate versus when they actually came online. The second is  [Crux Climate](https://www.cruxclimate.com/) Pricing Data, which reports quarterly ITC and PTC market prices from 2023 H2 through 2025 Q4. We converted EIA monthly data to quarterly frequency to match Crux’s reporting cadence, and defined construction delay as the difference between a project’s actual operating date and its first planned date, measured in months.
 
 
 ## 2.2 Analytical Approach
